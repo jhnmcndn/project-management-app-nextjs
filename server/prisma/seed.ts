@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 // - Load and seed data from JSON files into respective models
 // - Ensure data is processed in a specific order to maintain foreign key integrity
 
-async function deleteAllData(orderedFileNames: string[]) {
+const deleteAllData = async (orderedFileNames: string[]) => {
   const modelNames = orderedFileNames.map((fileName) => {
     const modelName = path.basename(fileName, path.extname(fileName));
     return modelName.charAt(0).toUpperCase() + modelName.slice(1);
@@ -24,7 +24,7 @@ async function deleteAllData(orderedFileNames: string[]) {
   }
 }
 
-async function main() {
+const main = async () => {
   const dataDirectory = path.join(__dirname, "seedData");
 
   const orderedFileNames = [
