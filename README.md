@@ -1,1 +1,3 @@
-﻿# Project Management App - Next.js
+# Project Management App
+
+**Note:** Work in Progress
