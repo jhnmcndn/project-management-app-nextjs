@@ -1,5 +1,3 @@
-<h3 align="center">Work in Progress</h3>
+# Project Management App
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-</p>
+**Note:** Work in Progress
