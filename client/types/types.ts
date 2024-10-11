@@ -1,4 +1,4 @@
-import { Priority, Status } from '@/types/enums';
+import {Priority, Status} from '@/types/enums';
 
 export interface Project {
   id: number;
@@ -19,7 +19,7 @@ export interface User {
 
 export interface Attachment {
   id: number;
-  fileUrl: string;
+  fileURL: string;
   fileName: string;
   taskId: number;
   uploadedById: number;
