@@ -11,7 +11,7 @@ type BoardProps = {
   setIsModalNewTaskOpen: (isOpen: boolean) => void;
 }
 
-const taskStatus = ['Todo', 'Work In Progress', 'Under Review', 'Completed'];
+const taskStatus = ['To Do', 'Work In Progress', 'Under Review', 'Completed'];
 
 const Board = ({ id, setIsModalNewTaskOpen }: BoardProps) => {
   const { data: tasks, isLoading, error } = useGetTasksQuery({ projectId: Number(id) });
@@ -143,10 +143,13 @@ const Task = ({ task }: TaskProps) => {
   )
 
   return (
-    <div ref={(instance) => {
+    <div
+      ref={(instance) => {
         drag(instance);
       }}
-      className={`mb-4 rounded-md bg-white shadow dark:bg-dark-secondary ${isDragging ? 'opacity-50' : 'opacity-100'}`}
+      className={`mb-4 rounded-md bg-white shadow dark:bg-dark-secondary 
+        ${isDragging ? 'opacity-50' : 'opacity-100'}`
+      }
     >
       {task.attachments && task.attachments.length > 0 && (
         <Image
