@@ -4,6 +4,8 @@ import {useState} from 'react';
 import ProjectHeader from '@/app/projects/ProjectHeader';
 import Board from '@/app/projects/Board';
 import List from "@/app/projects/List";
+import Timeline from "@/app/projects/Timeline";
+import Table from "@/app/projects/Table";
 
 type Props = {
   params: { id: string };
@@ -23,6 +25,9 @@ const Project = ({params}: Props) => {
       )}
       { activeTab === 'List' && (
         <List id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}/>
+      )}
+      { activeTab === 'Timeline' && (
+        <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}/>
       )}
     </div>
   );
