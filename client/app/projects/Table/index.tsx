@@ -71,7 +71,6 @@ const Table = ({ id, setIsModalNewTaskOpen }: Props) => {
     error,
     isLoading
   } = useGetTasksQuery({ projectId: Number(id) });
-  console.log('~~tasks:', tasks);
 
   if (isLoading) return <div>Loading...</div>
   if (error) return <div>An Error occurred while fetching task</div>

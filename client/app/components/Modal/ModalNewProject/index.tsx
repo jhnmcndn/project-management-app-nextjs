@@ -26,8 +26,6 @@ const ModalNewProject = ({ isOpen, onClose }: Props) => {
       description,
       startDate: formattedStartDate,
       endDate: formattedEndDate
-    }).then((res) => {
-      console.log('~~res:', res);
     })
   };
 

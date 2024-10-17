@@ -31,7 +31,6 @@ const Sidebar = () => {
   const dispatch = useAppDispatch();
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
-  console.log('~~projects:', projects)
 
   const screenWidth = window.innerWidth;
   const isSidebarCollapsed = useAppSelector((state) => state.global.isSidebarCollapsed);

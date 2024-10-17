@@ -7,9 +7,10 @@ import {Priority, Status} from "@/types/enums";
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  id: string;
 }
 
-const ModalNewTask = ({ isOpen, onClose }: Props) => {
+const ModalNewTask = ({ isOpen, onClose, id }: Props) => {
   const [createTask, { isLoading }] = useCreateTaskMutation();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -22,7 +23,7 @@ const ModalNewTask = ({ isOpen, onClose }: Props) => {
   const [assignedUserId, setAssignedUserId] = useState('');
 
   const handleSubmit = async () => {
-    if (!title) return;
+    if (!title || !authorUserId) return;
 
     const formattedStartDate = formatISO(new Date(startDate), { representation: 'complete'});
     const formattedDueDate = formatISO(new Date(dueDate), { representation: 'complete'});
@@ -37,13 +38,14 @@ const ModalNewTask = ({ isOpen, onClose }: Props) => {
       dueDate: formattedDueDate,
       authorUserId: parseInt(authorUserId),
       assignedUserId: parseInt(assignedUserId),
+      projectId: Number(id)
     }).then((res) => {
       console.log('~~res:', res);
     })
   };
 
   const isFormValid = () => {
-    return title;
+    return title && authorUserId;
   };
 
   const selectStyles = 'mb-4 block w-full rounded border border-gray-300 px-3 py-2 dark:border-dark-tertiary' +
