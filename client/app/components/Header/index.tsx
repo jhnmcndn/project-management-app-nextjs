@@ -1,6 +1,6 @@
 type Props = {
   name: string;
-  buttonComponent?: never;
+  buttonComponent?: any;
   isSmallText?: boolean;
 }
 
