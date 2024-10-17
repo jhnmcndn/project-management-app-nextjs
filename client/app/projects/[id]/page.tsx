@@ -4,7 +4,7 @@ import {useState} from 'react';
 import ProjectHeader from '@/app/projects/ProjectHeader';
 import Board from '@/app/projects/Board';
 import List from "@/app/projects/List";
-import Timeline from "@/app/projects/Timeline";
+import TimelineView from "@/app/projects/TimelineView";
 import Table from "@/app/projects/Table";
 import ModalNewTask from "@/app/components/Modal/ModalNewTask";
 
@@ -33,7 +33,7 @@ const Project = ({params}: Props) => {
         <List id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}/>
       )}
       { activeTab === 'Timeline' && (
-        <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}/>
+        <TimelineView id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}/>
       )}
        { activeTab === 'Table' && (
         <Table id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen}/>
