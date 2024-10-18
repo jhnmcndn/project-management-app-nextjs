@@ -1,6 +1,5 @@
 export const dataGridClassNames =
-  'border border-gray-200 bg-white shadow dark:border-stroke-dark ' +
-  'dark:bg-dark-secondary dark:text-gray-200';
+  'border border-gray-200 bg-white shadow dark:border-stroke-dark dark:bg-dark-secondary dark:text-gray-200';
 
 export const dataGridSxStyles = (isDarkMode: boolean) => {
   return {
@@ -9,7 +8,7 @@ export const dataGridSxStyles = (isDarkMode: boolean) => {
       '& [role="row"] > *': {
         backgroundColor: isDarkMode ? '#1d1f21' : 'white',
         borderColor: isDarkMode ? '#2d3135' : '',
-      }
+      },
     },
     '& .MuiTablePagination-root': {
       color: isDarkMode ? '#a3a3a3' : '',
@@ -28,6 +27,6 @@ export const dataGridSxStyles = (isDarkMode: boolean) => {
     },
     '& .MuiDataGrid-cell:focus': {
       outline: 'none',
-    }
-  }
-}
+    },
+  };
+};
