@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Project, SearchResults, Task } from '@/types/types';
+import { Project, SearchResults, Task, User } from '@/types/types';
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL }),
   reducerPath: 'api',
-  tagTypes: ['Projects', 'Tasks'],
+  tagTypes: ['Projects', 'Tasks', 'Users'],
   endpoints: (build) => ({
     getProjects: build.query<Project[], void>({
       query: () => 'projects',
@@ -21,7 +21,9 @@ export const api = createApi({
     getTasks: build.query<Task[], { projectId: number }>({
       query: ({ projectId }) => `tasks?projectId=${projectId}`,
       providesTags: (result) =>
-        result ? result.map(({ id }) => ({ type: 'Tasks' as const, id })) : [{ type: 'Tasks' as const }],
+        result
+          ? result.map(({ id }) => ({ type: 'Tasks' as const, id }))
+          : [{ type: 'Tasks' as const }],
     }),
     createTask: build.mutation<Task, Partial<Task>>({
       query: (task) => ({
@@ -39,6 +41,10 @@ export const api = createApi({
       }),
       invalidatesTags: (result, error, { taskId }) => [{ type: 'Tasks', id: taskId }],
     }),
+    getUsers: build.query<User[], void>({
+      query: () => 'users',
+      providesTags: ['Users'],
+    }),
     search: build.query<SearchResults, string>({
       query: (query) => `search?query=${query}`,
     }),
@@ -52,4 +58,5 @@ export const {
   useCreateTaskMutation,
   useUpdateTaskStatusMutation,
   useSearchQuery,
+  useGetUsersQuery,
 } = api;
