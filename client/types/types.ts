@@ -1,4 +1,4 @@
-import {Priority, Status} from '@/types/enums';
+import { Priority, Status } from '@/types/enums';
 
 export interface Project {
   id: number;
@@ -49,4 +49,11 @@ export interface SearchResults {
   tasks?: Task[];
   projects?: Project[];
   users?: User[];
+}
+
+export interface Team {
+  teamId: number;
+  teamName: string;
+  productOwnerUserId?: number;
+  projectManagerUserId?: number;
 }
