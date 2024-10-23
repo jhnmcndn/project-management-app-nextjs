@@ -5,19 +5,30 @@ import globalReducer from '@/state';
 import { api } from '@/state/api';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
-import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
   return {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getItem(_key: never) {
       return Promise.resolve(null);
     },
     setItem(_key: never, value: never) {
       return Promise.resolve(value);
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     removeItem(_key: never) {
       return Promise.resolve();
     },

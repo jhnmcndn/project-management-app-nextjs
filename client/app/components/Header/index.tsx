@@ -1,8 +1,8 @@
 type Props = {
   name: string;
-  buttonComponent?: any;
+  buttonComponent?: React.ReactNode;
   isSmallText?: boolean;
-}
+};
 
 const Header = ({ name, buttonComponent, isSmallText = false }: Props) => {
   return (

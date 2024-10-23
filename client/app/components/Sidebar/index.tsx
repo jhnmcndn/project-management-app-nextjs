@@ -32,7 +32,6 @@ const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
 
-  const screenWidth = window.innerWidth;
   const isSidebarCollapsed = useAppSelector((state) => state.global.isSidebarCollapsed);
 
   const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl
