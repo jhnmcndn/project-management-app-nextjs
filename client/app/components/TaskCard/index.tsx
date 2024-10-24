@@ -1,21 +1,21 @@
 import { format } from 'date-fns';
-import { Task } from "@/types/types";
-import Image from "next/image";
+import { Task } from '@/types/types';
+import Image from 'next/image';
 
 type Props = {
-  task: Task
-}
+  task: Task;
+};
 
 const TaskCard = ({ task }: Props) => {
   return (
-    <div className='mb-3 rounded bg-white px-4 shadow dark:bg-dark-secondary dark:text-white'>
+    <div className='dark:bg-dark-secondary mb-3 rounded bg-white px-4 shadow dark:text-white'>
       {task.attachments && task.attachments.length > 0 && (
         <div>
           <strong>Attachments:</strong>
           <div className='flex flex-wrap'>
             {task.attachments && task.attachments.length > 0 && (
               <Image
-                src={`/${task.attachments[0].fileURL}`}
+                src={`https://pm-s3-images-mac.s3.ap-southeast-1.amazonaws.com/${task.attachments[0].fileURL}`}
                 alt={task.attachments[0].fileName}
                 width={400}
                 height={200}
@@ -32,7 +32,7 @@ const TaskCard = ({ task }: Props) => {
         <strong>Title:</strong> {task.title}
       </p>
       <p>
-        <strong>Description:</strong>{' '} {task.description || 'No Description Provided'}
+        <strong>Description:</strong> {task.description || 'No Description Provided'}
       </p>
       <p>
         <strong>Status:</strong> {task.status}
@@ -44,16 +44,17 @@ const TaskCard = ({ task }: Props) => {
         <strong>Tags:</strong> {task.tags || 'No tags'}
       </p>
       <p>
-        <strong>Start Date:</strong>{' '} {task.startDate ? format(new Date(task.startDate), 'P') : 'Not set'}
+        <strong>Start Date:</strong>{' '}
+        {task.startDate ? format(new Date(task.startDate), 'P') : 'Not set'}
       </p>
       <p>
-        <strong>Due Date:</strong>{' '} {task.dueDate ? format(new Date(task.dueDate), 'P') : 'Not set'}
+        <strong>Due Date:</strong> {task.dueDate ? format(new Date(task.dueDate), 'P') : 'Not set'}
       </p>
       <p>
-        <strong>Author:</strong>{' '} {task.author ? task.author.username : 'Unknown'}
+        <strong>Author:</strong> {task.author ? task.author.username : 'Unknown'}
       </p>
       <p>
-        <strong>Assignee:</strong>{' '} {task.assignee ? task.assignee.username : 'Unassigned'}
+        <strong>Assignee:</strong> {task.assignee ? task.assignee.username : 'Unassigned'}
       </p>
     </div>
   );
