@@ -1,13 +1,13 @@
-import { useGetTasksQuery } from "@/state/api";
-import { useAppSelector } from "@/app/redux";
-import Header from "@/app/components/Header";
-import { DataGrid, GridColDef } from '@mui/x-data-grid'
-import {dataGridClassNames, dataGridSxStyles} from "@/lib/utils";
+import { useGetTasksQuery } from '@/state/api';
+import { useAppSelector } from '@/app/components/Providers/storeProvider';
+import Header from '@/app/components/Header';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { dataGridClassNames, dataGridSxStyles } from '@/lib/utils';
 
 type Props = {
   id: string;
   setIsModalNewTaskOpen: (isOpen: boolean) => void;
-}
+};
 
 const columns: GridColDef[] = [
   {
@@ -62,18 +62,14 @@ const columns: GridColDef[] = [
     width: 150,
     renderCell: (params) => params.value?.assignee || 'Unassigned',
   },
-]
+];
 
 const Table = ({ id, setIsModalNewTaskOpen }: Props) => {
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
-  const {
-    data: tasks,
-    error,
-    isLoading
-  } = useGetTasksQuery({ projectId: Number(id) });
+  const { data: tasks, error, isLoading } = useGetTasksQuery({ projectId: Number(id) });
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>An Error occurred while fetching task</div>
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An Error occurred while fetching task</div>;
 
   return (
     <div className='h-[540px] w-full px-4 pb-8 xl:px-6'>
@@ -83,7 +79,7 @@ const Table = ({ id, setIsModalNewTaskOpen }: Props) => {
           isSmallText
           buttonComponent={
             <button
-              className='flex items-center rounded bg-blue-primary px-3 py-2 text-white hover:bg-blue-600'
+              className='bg-blue-primary flex items-center rounded px-3 py-2 text-white hover:bg-blue-600'
               onClick={() => setIsModalNewTaskOpen(true)}
             >
               Add Task

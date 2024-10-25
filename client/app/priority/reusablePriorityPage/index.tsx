@@ -3,7 +3,7 @@
 import { Priority } from '@/types/enums';
 import { useState } from 'react';
 import { useGetTasksByUserQuery } from '@/state/api';
-import { useAppSelector } from '@/app/redux';
+import { useAppSelector } from '@/app/components/Providers/storeProvider';
 import { Task } from '@/types/types';
 import ModalNewTask from '@/app/components/Modal/ModalNewTask';
 import Header from '@/app/components/Header';

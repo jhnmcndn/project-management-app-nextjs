@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useAppDispatch, useAppSelector } from '@/app/redux';
+import { useAppDispatch, useAppSelector } from '@/app/components/Providers/storeProvider';
 import Link from 'next/link';
 import { setIsSidebarCollapsed } from '@/state';
 import { useGetProjectsQuery } from '@/state/api';

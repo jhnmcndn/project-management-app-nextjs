@@ -1,6 +1,6 @@
 import { Search, Settings, Menu, Sun, Moon } from 'lucide-react';
 import Link from 'next/link';
-import { useAppDispatch, useAppSelector } from '@/app/redux';
+import { useAppDispatch, useAppSelector } from '@/app/components/Providers/storeProvider';
 import { setIsDarkMode, setIsSidebarCollapsed } from '@/state';
 
 const Navbar = () => {
@@ -31,7 +31,9 @@ const Navbar = () => {
           onClick={() => {
             dispatch(setIsDarkMode(!isDarkMode));
           }}
-          className={isDarkMode ? `rounded p-2 dark:hover:bg-gray-700` : `rounded p-2 hover:bg-gray-100`}
+          className={
+            isDarkMode ? `rounded p-2 dark:hover:bg-gray-700` : `rounded p-2 hover:bg-gray-100`
+          }
         >
           {isDarkMode ? (
             <Sun className='h-6 w-6 cursor-pointer dark:text-white' />
@@ -42,7 +44,9 @@ const Navbar = () => {
         <Link
           href='/settings'
           className={
-            isDarkMode ? `h-min w-min rounded p-2 dark:hover:bg-gray-700` : `h-min w-min rounded p-2 hover:bg-gray-100`
+            isDarkMode
+              ? `h-min w-min rounded p-2 dark:hover:bg-gray-700`
+              : `h-min w-min rounded p-2 hover:bg-gray-100`
           }
         >
           <Settings className='h-6 w-6 cursor-pointer dark:text-white' />
