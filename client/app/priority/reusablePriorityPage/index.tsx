@@ -2,7 +2,7 @@
 
 import { Priority } from '@/types/enums';
 import { useState } from 'react';
-import { useGetTasksByUserQuery } from '@/state/api';
+import { useGetAuthUserQuery, useGetTasksByUserQuery } from '@/state/api';
 import { useAppSelector } from '@/app/components/Providers/storeProvider';
 import { Task } from '@/types/types';
 import ModalNewTask from '@/app/components/Modal/ModalNewTask';
@@ -74,7 +74,8 @@ const ReusablePriorityPage = ({ priority }: Props) => {
   const [view, setView] = useState<string>('list');
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState<boolean>(false);
 
-  const userId = 1;
+  const { data: currentUser } = useGetAuthUserQuery({});
+  const userId = currentUser?.userDetails?.userId ?? null;
   const {
     data: tasks,
     isLoading,
