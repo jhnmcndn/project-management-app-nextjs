@@ -1,6 +1,6 @@
 # Project Management Dashboard App
 
-> **Note:** 🚧 **Work in Progress** 🚧
+> **Note:** 🚧 **Project Completed** 🚧
 
 This repository hosts the code for a comprehensive tutorial on building a Project Management Dashboard using Next.js, Node.js, and AWS services.
 
