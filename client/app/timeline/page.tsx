@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useMemo, useState } from "react";
-import { useAppSelector } from "@/app/redux";
-import { useGetProjectsQuery } from "@/state/api";
+import { useMemo, useState } from 'react';
+import { useAppSelector } from '@/app/components/Providers/storeProvider';
+import { useGetProjectsQuery } from '@/state/api';
 import { DisplayOption, Gantt, ViewMode } from 'gantt-task-react';
-import "gantt-task-react/dist/index.css";
-import Header from "@/app/components/Header";
+import 'gantt-task-react/dist/index.css';
+import Header from '@/app/components/Header';
 
 type TaskTypeItems = 'task' | 'milestone' | 'project';
 
@@ -29,28 +29,26 @@ const Timeline = () => {
         progress: 50,
         isDisabled: false,
       })) || []
-    )
+    );
   }, [projects]);
 
-  const handleViewModeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleViewModeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setDisplayOptions((prev) => ({
       ...prev,
-      viewMode: event.target.value as ViewMode
+      viewMode: event.target.value as ViewMode,
     }));
-  }
+  };
 
-  if (isLoading) return <div>Loading...</div>
-  if (isError || !projects) return <div>An Error occurred while fetching projects</div>
+  if (isLoading) return <div>Loading...</div>;
+  if (isError || !projects) return <div>An Error occurred while fetching projects</div>;
 
   return (
     <div className='max-w-full p-8'>
       <header className='mb-4 flex items-center justify-between'>
-        <Header name='Projects Timeline'/>
+        <Header name='Projects Timeline' />
         <div className='relative inline-block w-64'>
           <select
-            className="focus:shadow-outline block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none dark:border-dark-secondary dark:bg-dark-secondary dark:text-white"
+            className='focus:shadow-outline dark:border-dark-secondary dark:bg-dark-secondary block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none dark:text-white'
             value={displayOptions.viewMode}
             onChange={handleViewModeChange}
           >
@@ -60,16 +58,16 @@ const Timeline = () => {
           </select>
         </div>
       </header>
-      <div className='overflow-hidden rounded-md bg-white shadow dark:bg-dark-secondary dark:text-white'>
+      <div className='dark:bg-dark-secondary overflow-hidden rounded-md bg-white shadow dark:text-white'>
         <div className='timeline'>
           <Gantt
             tasks={ganttTasks}
             {...displayOptions}
             columnWidth={displayOptions.viewMode === ViewMode.Month ? 150 : 100}
-            listCellWidth="100px"
-            projectBackgroundColor={isDarkMode ? "#101214" : "#1f2937"}
-            projectProgressColor={isDarkMode ? "#1f2937" : "#aeb8c2"}
-            projectProgressSelectedColor={isDarkMode ? "#000" : "#9ba1a6"}
+            listCellWidth='100px'
+            projectBackgroundColor={isDarkMode ? '#101214' : '#1f2937'}
+            projectProgressColor={isDarkMode ? '#1f2937' : '#aeb8c2'}
+            projectProgressSelectedColor={isDarkMode ? '#000' : '#9ba1a6'}
           />
         </div>
       </div>

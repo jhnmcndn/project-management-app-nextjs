@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetUsersQuery } from '@/state/api';
-import { useAppSelector } from '@/app/redux';
+import { useAppSelector } from '@/app/components/Providers/storeProvider';
 import Header from '@/app/components/Header';
 import {
   DataGrid,

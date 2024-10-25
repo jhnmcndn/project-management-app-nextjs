@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetProjectsQuery, useGetTasksQuery } from '@/state/api';
-import { useAppSelector } from '@/app/redux';
+import { useAppSelector } from '@/app/components/Providers/storeProvider';
 import { Priority } from '@/types/enums';
 import { Project, Task } from '@/types/types';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
