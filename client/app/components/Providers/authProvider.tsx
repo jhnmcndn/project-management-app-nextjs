@@ -42,7 +42,7 @@ const formFields = {
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='pt-5'>
+    <div>
       <Authenticator formFields={formFields}>
         {({ user }) =>
           user ? (
