@@ -1,6 +1,7 @@
 # Project Management Dashboard App
 
-> **Note:** 🚧 **Project Completed** 🚧
+> **Note:** ✅ **Project Completed** ✅
+> **Project URL:** https://master.d2syi2jz1u3g2s.amplifyapp.com/
 
 This repository hosts the code for a comprehensive tutorial on building a Project Management Dashboard using Next.js, Node.js, and AWS services.
 
