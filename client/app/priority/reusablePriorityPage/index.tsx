@@ -81,12 +81,6 @@ const ReusablePriorityPage = ({ priority }: Props) => {
     isLoading,
     isError: isTasksError,
   } = useGetTasksByUserQuery(userId || 0, { skip: userId === null });
-
-  const {
-    data: tasks,
-    isLoading,
-    isError: isTasksError,
-  } = useGetTasksByUserQuery(userId || 0, { skip: userId === null });
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
   const filteredTasks = tasks?.filter((task: Task) => task.priority === priority);
   if (!tasksError || !tasks) return <div>Error fetching tasks</div>;
