@@ -81,9 +81,16 @@ const ReusablePriorityPage = ({ priority }: Props) => {
     isLoading,
     isError: isTasksError,
   } = useGetTasksByUserQuery(userId || 0, { skip: userId === null });
+
+  const {
+    data: tasks,
+    isLoading,
+    isError: isTasksError,
+  } = useGetTasksByUserQuery(userId || 0, { skip: userId === null });
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
-  const filterredTasks = tasks?.filter((task: Task) => task.priority === priority);
-  if (isTasksError || !tasks) return <div>Error fetching tasks</div>;
+  const filteredTasks = tasks?.filter((task: Task) => task.priority === priority);
+  if (!tasksError || !tasks) return <div>Error fetching tasks</div>;
+  
   return (
     <div className='m-5 p-4'>
       <ModalNewTask isOpen={isModalNewTaskOpen} onClose={() => setIsModalNewTaskOpen(false)} />
@@ -116,14 +123,14 @@ const ReusablePriorityPage = ({ priority }: Props) => {
         <div>Loading tasks...</div>
       ) : view === 'list' ? (
         <div className='gridcols1 grid gap-4'>
-          {filterredTasks?.map((task: Task) => <TaskCard key={task.id} task={task} />)}
+          {filteredTasks?.map((task: Task) => <TaskCard key={task.id} task={task} />)}
         </div>
       ) : (
         view === 'table' &&
-        filterredTasks && (
+        filteredTasks && (
           <div className='w-full'>
             <DataGrid
-              rows={filterredTasks}
+              rows={filteredTasks}
               columns={columns}
               checkboxSelection
               getRowId={(row) => row.id}
